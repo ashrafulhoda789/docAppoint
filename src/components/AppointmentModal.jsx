@@ -1,5 +1,6 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import { Envelope } from "@gravity-ui/icons";
 import {
     Button,
@@ -15,14 +16,20 @@ export function AppointmentModal({ doctor }) {
 
     const closeRef = useRef(null);
 
+
+    const userData = authClient.useSession();
+    const user = userData?.data?.user;
+
     const onSubmit = async (e) => {
         e.preventDefault();
 
         const formData = new FormData(e.currentTarget);
         const appointments = Object.fromEntries(formData.entries());
 
+
         const appointment = {
-            userEmail: "", 
+            userEmail: user?.email,
+            userId: user?.id,
             doctorName: doctor?.name,
 
             patientName: appointments.patientName,
