@@ -47,8 +47,8 @@ export default function LoginPage() {
         <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-blue-50 via-white to-cyan-50 px-4 relative overflow-hidden">
 
             {/* Background shapes */}
-            <div className="absolute w-96 h-96 bg-blue-200/30 rounded-full blur-3xl top-[-80px] left-[-80px]" />
-            <div className="absolute w-96 h-96 bg-cyan-200/30 rounded-full blur-3xl bottom-[-80px] right-[-80px]" />
+            <div className="absolute w-96 h-96 bg-blue-200/30 rounded-full blur-3xl -top-20 -left-20" />
+            <div className="absolute w-96 h-96 bg-cyan-200/30 rounded-full blur-3xl -bottom-20 -right-20" />
 
             <Card className="relative z-10 w-full max-w-md backdrop-blur-xl bg-white/80 border border-white/40 shadow-2xl rounded-3xl p-8">
 
@@ -76,7 +76,7 @@ export default function LoginPage() {
                     <TextField name="email" type="email" isRequired>
                         <Label>Email Address</Label>
                         <Input
-                            placeholder="doctor@gmail.com"
+                            placeholder="Enter your email"
                             className="h-12 rounded-xl border-gray-200 focus:border-blue-500"
                         />
                         <FieldError />

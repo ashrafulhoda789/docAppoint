@@ -96,9 +96,7 @@ export default function SignUpPage() {
                             placeholder="Enter Profile URI"
                             className="h-12 rounded-xl border-gray-200 focus:border-blue-500"
                         />
-                        <Description className="text-xs text-gray-500">
-                            Optional but improves profile appearance
-                        </Description>
+                       
                         <FieldError />
                     </TextField>
 
@@ -113,18 +111,31 @@ export default function SignUpPage() {
                     </TextField>
 
                     {/* Password */}
-                    <TextField name="password" type="password" isRequired>
+                    <TextField
+                        isRequired
+                        minLength={6}
+                        name="password"
+                        type="password"
+                        validate={(value) => {
+                            if (value.length < 6) {
+                                return "Password must be at least 6 characters";
+                            }
+                            if (!/[A-Z]/.test(value)) {
+                                return "Password must contain at least one uppercase letter";
+                            }
+                            if (!/[a-z]/.test(value)) {
+                                return "Password must contain at least one lowercase letter";
+                            }
+                            
+                            return null;
+                        }}
+                    >
                         <Label>Password</Label>
-                        <Input
-                            type="password"
-                            placeholder="Create a strong password"
-                            className="h-12 rounded-xl border-gray-200 focus:border-blue-500"
-                        />
-                        <Description className="text-xs text-gray-500">
-                            Must include 8+ chars, uppercase & number
-                        </Description>
+                        <Input placeholder="Enter your password" />
+                        <Description>Must be at least 6 characters with 1 uppercase and 1 lowercase</Description>
                         <FieldError />
                     </TextField>
+
 
                     {/* Register Button */}
                     <Button

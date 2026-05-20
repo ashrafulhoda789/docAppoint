@@ -5,7 +5,7 @@ import { FaStar } from "react-icons/fa";
 
 const DoctorsCard = ({ doctor }) => {
     return (
-        <div className="bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden group">
+        <div className="bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden">
 
             {/* Doctor Image */}
             <div className="relative w-full aspect-4/3 bg-slate-100 overflow-hidden rounded-t-2xl">
