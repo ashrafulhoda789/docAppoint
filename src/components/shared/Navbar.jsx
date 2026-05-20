@@ -4,19 +4,22 @@ import { useState } from 'react';
 import NextLink from 'next/link';
 import {
   Button,
-  Avatar,
-  Badge,
   Link as HeroLink,
 } from '@heroui/react';
 
 import { RxHamburgerMenu } from 'react-icons/rx';
-import { IoClose, IoNotificationsOutline } from 'react-icons/io5';
+import { IoClose } from 'react-icons/io5';
 import Image from 'next/image';
+import Link from 'next/link';
+import { authClient } from '@/lib/auth-client';
+
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const user = false;
+  const { data, isPending, error } = authClient.useSession();
+
+  const user = data?.user;
 
   const navItems = [
     { name: 'Home', href: '/' },
@@ -53,7 +56,7 @@ const Navbar = () => {
               <div className="relative flex h-12 w-12 items-center justify-center rounded-2xl border border-cyan-400/20 bg-white shadow-lg shadow-cyan-500/20 transition-all duration-300 group-hover:scale-105 group-hover:shadow-cyan-500/40">
 
                 <Image
-                  src="/logo.png"
+                  src={"/logo.png"}
                   alt="DocAppoint"
                   width={62}
                   height={62}
@@ -62,7 +65,7 @@ const Navbar = () => {
               </div>
 
               <div className="flex flex-col">
-                <h1 className="bg-linear-to-r from-cyan-300 via-blue-400 to-cyan-500 bg-clip-text text-2xl font-black tracking-wide text-transparent">
+                <h1 className="hidden sm:block bg-linear-to-r from-cyan-300 via-blue-400 to-cyan-500 bg-clip-text text-2xl font-black tracking-wide text-transparent">
                   DocAppoint
                 </h1>
 
@@ -93,64 +96,39 @@ const Navbar = () => {
           {/* RIGHT */}
           <div className="flex items-center gap-3">
 
-            {user ? (
-              <>
-                <Badge color="danger" content="" placement="top-right" shape="circle">
-                  <Button
-                    isIconOnly
-                    radius="full"
-                    variant="bordered"
-                    className="hidden border-white/10 bg-white/5 text-cyan-300 transition hover:bg-cyan-500/10 md:flex"
-                  >
-                    <IoNotificationsOutline size={22} />
-                  </Button>
-                </Badge>
 
-                <div className="hidden items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-2 py-1.5 transition hover:bg-cyan-500/10 md:flex">
-
-                  <Avatar
-                    src="https://i.pravatar.cc/150?img=12"
-                    className="h-10 w-10 border border-cyan-400/40"
-                  />
-
-                  <div>
-                    <h3 className="text-sm font-semibold text-white">
-                      Ashraful
-                    </h3>
-                    <p className="text-xs text-slate-400">Patient</p>
-                  </div>
+            {
+              user ? (
+                <div className='flex gap-2 items-center'>
+                  <Image src={user?.image} alt={user?.name} width={40} height={40} className='rounded-full' />
+                  <Button onClick={async () => await authClient.signOut()} variant='ghost' className={'text-rose-500'}>LogOut</Button>
                 </div>
+              ) : (
+                <div className="flex items-center gap-3">
+                  <Link href={'/login'}>
 
-                <Button
-                  radius="full"
-                  variant="bordered"
-                  className="hidden border-red-500/30 text-red-400 transition hover:bg-red-500/10 md:flex"
-                >
-                  Logout
-                </Button>
-              </>
-            ) : (
-              <>
-                <Button
-                  as={NextLink}
-                  href="/login"
-                  radius="full"
-                  variant="bordered"
-                  className="hidden border-cyan-400/30 text-cyan-300 transition-all duration-300 hover:bg-cyan-500/10 md:flex"
-                >
-                  Login
-                </Button>
+                    <Button
+                      radius="full"
+                      variant="bordered"
+                      className="hidden border-cyan-400/30 text-cyan-300 transition-all duration-300 hover:bg-cyan-500/10 md:flex"
+                    >
+                      Login
+                    </Button>
+                  </Link>
 
-                <Button
-                  as={NextLink}
-                  href="/register"
-                  radius="full"
-                  className="bg-linear-to-r from-cyan-500 via-blue-500 to-cyan-600 font-semibold text-white shadow-lg shadow-cyan-500/20 transition-all duration-300 hover:scale-105 hover:shadow-cyan-500/40"
-                >
-                  Register
-                </Button>
-              </>
-            )}
+                  <Link href={'/register'}>
+                    <Button
+                      radius="full"
+                      className="bg-linear-to-r from-cyan-500 via-blue-500 to-cyan-600 font-semibold text-white shadow-lg shadow-cyan-500/20 transition-all duration-300 hover:scale-105 hover:shadow-cyan-500/40"
+                    >
+                      Register
+                    </Button>
+                  </Link>
+                </div>
+              )
+            }
+
+
           </div>
         </header>
 
@@ -177,7 +155,7 @@ const Navbar = () => {
                   <>
                     <Button
                       radius="full"
-                      className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white"
+                      className="bg-linear-to-r from-cyan-500 to-blue-600 text-white"
                     >
                       Dashboard
                     </Button>
@@ -206,7 +184,7 @@ const Navbar = () => {
                       as={NextLink}
                       href="/register"
                       radius="full"
-                      className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white"
+                      className="bg-linear-to-r from-cyan-500 to-blue-600 text-white"
                     >
                       Register
                     </Button>
