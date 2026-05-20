@@ -149,48 +149,7 @@ const Navbar = () => {
                 </li>
               ))}
 
-              <div className="mt-4 flex flex-col gap-3">
-
-                {user ? (
-                  <>
-                    <Button
-                      radius="full"
-                      className="bg-linear-to-r from-cyan-500 to-blue-600 text-white"
-                    >
-                      Dashboard
-                    </Button>
-
-                    <Button
-                      radius="full"
-                      variant="bordered"
-                      color="danger"
-                    >
-                      Logout
-                    </Button>
-                  </>
-                ) : (
-                  <>
-                    <Button
-                      as={NextLink}
-                      href="/login"
-                      radius="full"
-                      variant="bordered"
-                      className="border-cyan-400/30 text-cyan-300"
-                    >
-                      Login
-                    </Button>
-
-                    <Button
-                      as={NextLink}
-                      href="/register"
-                      radius="full"
-                      className="bg-linear-to-r from-cyan-500 to-blue-600 text-white"
-                    >
-                      Register
-                    </Button>
-                  </>
-                )}
-              </div>
+              
 
             </ul>
           </div>
