@@ -12,8 +12,8 @@ const Banner = () => {
             <div className="absolute inset-0 bg-linear-to-br from-[#071A3A] via-[#0B2A52] to-[#0E6BA8]" />
 
             {/* soft glow shapes */}
-            <div className="absolute -top-32 -left-32 w-[28rem] h-[28rem] bg-cyan-400/20 blur-3xl rounded-full" />
-            <div className="absolute bottom-0 right-0 w-[32rem] h-[32rem] bg-blue-500/20 blur-3xl rounded-full" />
+            <div className="absolute -top-32 -left-32 w-md h-112 bg-cyan-400/20 blur-3xl rounded-full" />
+            <div className="absolute bottom-0 right-0 w-lg h-128 bg-blue-500/20 blur-3xl rounded-full" />
 
             <div className="relative max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-10 items-center">
 
@@ -65,10 +65,10 @@ const Banner = () => {
                 <div className="relative flex justify-center">
 
                     {/* OUTER GLOW FRAME */}
-                    <div className="absolute w-[420px] h-[420px] bg-white/5 rounded-[40px] blur-sm" />
+                    <div className="absolute w-105 h-105 bg-white/5 rounded-[40px] blur-sm" />
 
                     {/* MAIN CARD */}
-                    <Card className="relative w-[360px] h-[420px] bg-[#0F1E3A] border border-white/10 rounded-[32px] shadow-2xl">
+                    <Card className="relative w-90 h-105 bg-[#0F1E3A] border border-white/10 rounded-[32px] shadow-2xl">
 
                         <div className="p-6 space-y-4">
 
@@ -81,7 +81,7 @@ const Banner = () => {
                             </div>
 
                             {/* INNER DARK PANEL */}
-                            <div className="mt-6 w-full h-[250px] rounded-2xl bg-linear-to-b from-[#0B1A33] to-[#0A1630] border border-white/5" />
+                            <div className="mt-6 w-full h-62.5 rounded-2xl bg-linear-to-b from-[#0B1A33] to-[#0A1630] border border-white/5" />
 
                             {/* SMALL INFO */}
                             <div className="flex justify-between text-sm text-slate-300 pt-3">
