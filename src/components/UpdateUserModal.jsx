@@ -25,7 +25,6 @@ export function UpdateUserModal({ user }) {
         })
 
         toast.success('Profile updated successfully!')
-
         setIsOpen(false);
     }
     return (
