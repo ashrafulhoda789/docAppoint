@@ -31,6 +31,8 @@ export function AppointmentModal({ doctor }) {
             userEmail: user?.email,
             userId: user?.id,
             doctorName: doctor?.name,
+            doctorImage: doctor?.image,
+            specialty: doctor?.specialty,
 
             patientName: appointments.patientName,
             gender: appointments.gender,

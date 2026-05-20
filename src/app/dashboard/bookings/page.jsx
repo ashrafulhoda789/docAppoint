@@ -9,7 +9,7 @@ const MyBookingPage = async () => {
     });
 
     const user = session?.user;
-    console.log(user.id, user);
+    // console.log(user.id, user);
 
     const res = await fetch(
         `http://localhost:5000/myAppointment/${user.id}`,
@@ -17,7 +17,7 @@ const MyBookingPage = async () => {
     );
 
     const appointments = await res.json();
-    console.log(appointments.length, appointments);
+    // console.log(appointments.length, appointments);
 
     return (
         <div className="min-h-screen bg-gray-50 p-6">
@@ -43,7 +43,7 @@ const MyBookingPage = async () => {
                     </p>
                 </div>
             ) : (
-                <div className="max-w-6xl mx-auto grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                <div className="max-w-6xl mx-auto grid gap-6 grid-cols-1">
                     {appointments.map((booking) => (
                         <MyAppointmentCard key={booking._id} booking={booking}/>
                     ))}
