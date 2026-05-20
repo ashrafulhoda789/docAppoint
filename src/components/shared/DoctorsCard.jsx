@@ -32,16 +32,8 @@ const DoctorsCard = ({ doctor }) => {
                 {/* Info */}
                 <div className="text-sm text-slate-500 space-y-1">
                     <p>🏥 {doctor.hospital || "City Medical Hospital"}</p>
-                    <p>⏰ {doctor.availableTime || "10:00 AM - 5:00 PM"}</p>
                 </div>
 
-                {/* Rating (UI placeholder) */}
-                <div className="flex items-center gap-1 text-yellow-500 text-sm">
-                    <FaStar />
-                    <span className="text-slate-600">
-                        {doctor.rating || "4.5"}
-                    </span>
-                </div>
 
                 {/* Button */}
                 <Link href={`/appointments/${doctor._id}`}>

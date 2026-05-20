@@ -1,3 +1,4 @@
+import { AppointmentModal } from "@/components/AppointmentModal";
 import Image from "next/image";
 import {
     FaStar,
@@ -70,16 +71,7 @@ const DoctorDetailsPage = async ({ params }) => {
                                 {doctor.experience} experience
                             </p>
 
-                            {/* Rating */}
-                            <div className="flex items-center gap-2 text-yellow-500 text-sm">
-                                <FaStar />
-                                <span className="text-slate-700 font-semibold">
-                                    4.6
-                                </span>
-                                <span className="text-slate-400">
-                                    (200+ patients)
-                                </span>
-                            </div>
+                           
 
                             {/* Hospital */}
                             <div className="flex items-center gap-2 text-slate-600 text-sm">
@@ -138,9 +130,7 @@ const DoctorDetailsPage = async ({ params }) => {
 
                         {/* CTA */}
                         <div className="pt-2">
-                            <button className="w-full md:w-auto px-8 py-3 bg-sky-500 hover:bg-sky-600 text-white rounded-2xl font-semibold shadow-sm transition">
-                                Book Appointment
-                            </button>
+                           <AppointmentModal doctor={doctor}/>
                         </div>
                     </div>
                 </div>
