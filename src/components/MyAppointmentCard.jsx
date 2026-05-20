@@ -14,7 +14,7 @@ const MyAppointmentCard = ({ booking }) => {
                     src={doctorImage}
                     alt={doctorName}
                     fill
-                    className="object-cover object-top"
+                    className="object-cover object-top "
                 />
             </div>
 

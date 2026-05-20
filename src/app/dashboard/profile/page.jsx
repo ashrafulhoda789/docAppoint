@@ -11,7 +11,7 @@ const MyProfilePage = () => {
     const user = userData?.data?.user;
 
     return (
-        <div className="min-h-screen  flex items-center justify-center p-6 relative overflow-hidden">
+        <div className="flex items-center justify-center p-6 relative overflow-hidden">
 
             {/* Background Blobs */}
             
