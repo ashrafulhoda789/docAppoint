@@ -16,9 +16,8 @@ import { authClient } from '@/lib/auth-client';
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const { data } = authClient.useSession();
-
-  const user = data?.user;
+  const userData = authClient.useSession();
+  const user = userData?.data?.user;
 
   const navItems = [
     { name: 'Home', href: '/' },

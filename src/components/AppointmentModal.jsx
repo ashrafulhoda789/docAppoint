@@ -10,6 +10,7 @@ import {
     Surface,
     TextField,
 } from "@heroui/react";
+import { redirect } from "next/navigation";
 import { useRef } from "react";
 import { toast } from "react-toastify";
 
@@ -27,6 +28,9 @@ export function AppointmentModal({ doctor }) {
         const formData = new FormData(e.currentTarget);
         const appointments = Object.fromEntries(formData.entries());
 
+        if (!user) {
+            redirect('/login')
+        }
 
         const appointment = {
             userEmail: user?.email,
@@ -53,8 +57,8 @@ export function AppointmentModal({ doctor }) {
 
         const data = await res.json();
 
-        console.log(data);
-        if(data.insertedId){
+        // console.log(data);
+        if (data.insertedId) {
             toast.success('Appointment Booked Successfully!');
         }
 
@@ -69,7 +73,7 @@ export function AppointmentModal({ doctor }) {
                 <Modal.Container placement="center" className="z-50">
                     <Modal.Dialog className="sm:max-w-lg rounded-3xl border border-teal-100 bg-white shadow-2xl">
 
-                        <Modal.CloseTrigger ref={closeRef} className="text-teal-500"/>
+                        <Modal.CloseTrigger ref={closeRef} className="text-teal-500" />
 
                         <Modal.Header className="border-b border-teal-100 bg-linear-to-r from-teal-50 to-cyan-50 p-5">
                             <Modal.Icon className="bg-teal-100 text-teal-600 rounded-xl">
@@ -93,7 +97,7 @@ export function AppointmentModal({ doctor }) {
 
                                 <form onSubmit={onSubmit} className="flex flex-col gap-4">
 
-                                    <TextField name="patientName" variant="secondary">
+                                    <TextField name="patientName" variant="secondary" isRequired>
                                         <Label>Patient Name</Label>
                                         <Input name="patientName" placeholder="Enter patient name" />
                                     </TextField>
@@ -101,6 +105,7 @@ export function AppointmentModal({ doctor }) {
                                     <div>
                                         <Label>Gender</Label>
                                         <select
+                                            isRequired
                                             name="gender"
                                             className="w-full p-2 border rounded-md"
                                         >
@@ -111,12 +116,12 @@ export function AppointmentModal({ doctor }) {
                                         </select>
                                     </div>
 
-                                    <TextField name="phone" variant="secondary">
+                                    <TextField name="phone" variant="secondary" isRequired>
                                         <Label>Phone Number</Label>
                                         <Input name="phone" placeholder="01XXXXXXXXX" type="tel" />
                                     </TextField>
 
-                                    <TextField name="date" variant="secondary">
+                                    <TextField name="date" variant="secondary" isRequired>
                                         <Label>Appointment Date</Label>
                                         <Input name="date" type="date" />
                                     </TextField>
@@ -124,6 +129,7 @@ export function AppointmentModal({ doctor }) {
                                     <div>
                                         <Label>Available Time Slots</Label>
                                         <select
+                                            isRequired
                                             name="time"
                                             className="w-full p-2 border rounded-md"
                                         >
