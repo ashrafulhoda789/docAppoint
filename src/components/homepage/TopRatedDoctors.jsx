@@ -3,7 +3,7 @@ import DoctorsCard from "../shared/DoctorsCard";
 
 const TopRatedDoctors = async () => {
 
-    const res = await fetch('http://localhost:5000/topRated', {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/topRated`, {
         cache: "no-store"
     });
 
