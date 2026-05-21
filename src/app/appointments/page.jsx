@@ -1,37 +1,42 @@
 import DoctorsCard from "@/components/shared/DoctorsCard";
+import SearchBar from "@/components/shared/SearchBar";
+import { fetchAllDoctors } from "@/lib/appointments/data";
 
-const AllApointmentsPage = async () => {
-    const res = await fetch('http://localhost:5000/alldoctors', {
-        cache: "no-store",
-    });
+const AllApointmentsPage = async ({searchParams}) => {
 
-    const doctors = await res.json();
+    const sParams = await searchParams;
+
+    const doctors = await fetchAllDoctors(sParams?.searchTerm);
 
     return (
-        <div className="min-h-screen px-6 py-10">
+        <div className="min-h-screen bg-slate-50 px-6 py-10">
 
-            {/* Header Section */}
-            <div className="max-w-6xl mx-auto text-center mb-10">
-                <h1 className="text-3xl md:text-4xl font-bold text-slate-800">
+            <div className="mx-auto mb-10 max-w-6xl text-center">
+
+                <h1 className="text-3xl font-bold text-slate-800 md:text-4xl">
                     Find Your Doctor
                 </h1>
-                <p className="text-slate-500 mt-2">
+
+                <p className="mt-2 text-slate-500">
                     Browse and book appointments with trusted specialists
                 </p>
+
             </div>
 
-            {/* Doctors Grid */}
-            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                {doctors?.length > 0 ? (
-                    doctors.map((doctor) => (
+            <div className="mb-10">
+                <SearchBar />
+            </div>
+
+            <div className="mx-auto grid max-w-7xl grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+
+                {
+                    doctors?.map((doctor) => (
                         <DoctorsCard key={doctor._id} doctor={doctor} />
                     ))
-                ) : (
-                    <div className="col-span-full text-center text-slate-500">
-                        No doctors available right now.
-                    </div>
-                )}
+                }
+
             </div>
+
         </div>
     );
 };
