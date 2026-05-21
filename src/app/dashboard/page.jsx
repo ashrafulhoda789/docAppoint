@@ -3,7 +3,6 @@ import { auth } from '@/lib/auth';
 import { headers } from 'next/headers';
 import {
     FaCalendarCheck,
-    FaClock,
     FaUserMd,
 } from 'react-icons/fa';
 
@@ -14,7 +13,6 @@ const DashBoardPage = async () => {
     });
 
     const user = session?.user;
-    // console.log(user.id, user);
 
     const res = await fetch(
         `http://localhost:5000/myAppointment/${user.id}`,
@@ -30,148 +28,128 @@ const DashBoardPage = async () => {
     const doctors = await doctorRes.json();
 
     return (
-        <div className="space-y-8">
+        <div className="space-y-10">
 
-            {/* Heading */}
-            <div>
-                <h1 className="text-3xl font-bold text-gray-800">
+            <div className="rounded-3xl border border-teal-100 bg-gradient-to-r from-teal-50 to-cyan-50 p-8">
+
+                <h1 className="text-3xl font-black text-slate-900 md:text-4xl">
                     Welcome Back 👋
                 </h1>
 
-                <p className="text-gray-500 mt-1">
-                    Here’s an overview of your appointments.
+                <p className="mt-2 text-slate-600">
+                    Here&apos;s an overview of your appointments and activity.
                 </p>
+
             </div>
 
-            {/* Stats Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
 
-                {/* Total Bookings */}
-                <div className="bg-white rounded-3xl p-6 shadow-sm border border-gray-100">
+                <div className="rounded-3xl border border-teal-100 bg-white p-6 shadow-sm transition hover:shadow-lg">
+
                     <div className="flex items-center justify-between">
 
                         <div>
-                            <p className="text-gray-500 text-sm">
+
+                            <p className="text-sm text-slate-500">
                                 Total Bookings
                             </p>
 
-                            <h2 className="text-3xl font-bold text-gray-800 mt-2">
+                            <h2 className="mt-2 text-4xl font-black text-slate-900">
                                 {appointments.length}
                             </h2>
+
                         </div>
 
-                        <div className="w-14 h-14 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center text-2xl">
+                        <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-teal-50 text-2xl text-teal-600">
                             <FaCalendarCheck />
                         </div>
 
                     </div>
+
                 </div>
 
-                {/* Doctors */}
-                <div className="bg-white rounded-3xl p-6 shadow-sm border border-gray-100">
+                <div className="rounded-3xl border border-teal-100 bg-white p-6 shadow-sm transition hover:shadow-lg">
+
                     <div className="flex items-center justify-between">
 
                         <div>
-                            <p className="text-gray-500 text-sm">
-                                Doctors Consulted
+
+                            <p className="text-sm text-slate-500">
+                                Doctors Available
                             </p>
 
-                            <h2 className="text-3xl font-bold text-gray-800 mt-2">
+                            <h2 className="mt-2 text-4xl font-black text-slate-900">
                                 {doctors.length}
                             </h2>
+
                         </div>
 
-                        <div className="w-14 h-14 rounded-2xl bg-green-100 text-green-600 flex items-center justify-center text-2xl">
+                        <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-50 text-2xl text-emerald-600">
                             <FaUserMd />
                         </div>
 
                     </div>
+
                 </div>
 
             </div>
 
-            {/* Recent Appointments */}
-            <div>
+            <div className="space-y-6">
 
-                <div className="flex items-center justify-between mb-5">
+                <div className="space-y-1">
 
-                    <div>
-                        <h2 className="text-2xl font-bold text-gray-800">
-                            Recent Appointments
-                        </h2>
+                    <h2 className="text-2xl font-bold text-slate-900">
+                        Recent Appointments
+                    </h2>
 
-                        <p className="text-sm text-gray-500">
-                            Your latest booked appointments
-                        </p>
+                    <p className="text-sm text-slate-500">
+                        Your latest booked appointments
+                    </p>
+
+                </div>
+
+                {appointments.length === 0 ? (
+
+                    <div className="flex min-h-[60vh] items-center justify-center">
+
+                        <div className="w-full max-w-md rounded-3xl border border-teal-100 bg-white p-10 text-center shadow-lg">
+
+                            <div className="mx-auto mb-6 flex h-24 w-24 items-center justify-center rounded-full bg-teal-50">
+
+                                <FaCalendarCheck className="text-4xl text-teal-600" />
+
+                            </div>
+
+                            <h2 className="text-2xl font-bold text-slate-900">
+                                No Appointments Yet
+                            </h2>
+
+                            <p className="mt-3 text-slate-500">
+                                You haven&apos;t booked any doctor appointment yet. Start booking now and manage everything easily from your dashboard.
+                            </p>
+
+                        </div>
+
                     </div>
 
-                </div>
+                ) : (
 
-                <div className="space-y-6">
+                    <div className="grid grid-cols-1 gap-6">
 
-                    {
-                        appointments.length === 0 ? (
+                        {appointments.map((booking) => (
+                            <MyAppointmentCard
+                                key={booking._id}
+                                booking={booking}
+                            />
+                        ))}
 
-                            <div className="flex items-center justify-center min-h-[60vh]">
+                    </div>
 
-                                <div className="w-full max-w-md rounded-3xl border border-gray-200 bg-white/80 backdrop-blur-xl shadow-lg p-8 text-center">
-
-                                    <div className="w-24 h-24 mx-auto rounded-full bg-blue-50 flex items-center justify-center mb-6">
-
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            fill="none"
-                                            viewBox="0 0 24 24"
-                                            strokeWidth={1.5}
-                                            stroke="currentColor"
-                                            className="w-12 h-12 text-blue-500"
-                                        >
-                                            <path
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                                d="M8.25 6.75V4.5m7.5 2.25V4.5M3.75 9.75h16.5M4.5 6h15A1.5 1.5 0 0121 7.5v10.5A1.5 1.5 0 0119.5 19.5h-15A1.5 1.5 0 013 18V7.5A1.5 1.5 0 014.5 6z"
-                                            />
-                                        </svg>
-
-                                    </div>
-
-                                    <h2 className="text-2xl font-bold text-gray-800 mb-3">
-                                        No Appointments Yet
-                                    </h2>
-
-                                    <p className="text-gray-500 leading-relaxed mb-6">
-                                        You haven&apos;t booked any doctor appointment yet.
-                                        Start booking appointments and manage them easily
-                                        from your dashboard.
-                                    </p>
-
-                                   
-
-                                </div>
-
-                            </div>
-
-                        ) : (
-
-                            <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
-
-                                {appointments.map((booking) => (
-                                    <MyAppointmentCard
-                                        key={booking._id}
-                                        booking={booking}
-                                    />
-                                ))}
-
-                            </div>
-
-                        )
-                    }
-
-                </div>
+                )}
 
             </div>
 
-        </div >
+        </div>
     );
 };
 

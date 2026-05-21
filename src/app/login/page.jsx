@@ -93,15 +93,13 @@ export default function LoginPage() {
                         <FieldError />
                     </TextField>
 
-                    {/* Login Button */}
                     <Button
                         type="submit"
-                        className="w-full h-12 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold"
+                        className="w-full bg-linear-to-r from-teal-700 to-cyan-500 py-6 text-base font-semibold text-white shadow-lg shadow-teal-500/20 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-teal-500/30"
                     >
-                        Login to Dashboard
+                        Login
                     </Button>
 
-                    {/* Google Login */}
                     <Button
                         type="button"
                         onClick={handleGoogleSignIn}
@@ -116,7 +114,7 @@ export default function LoginPage() {
 
                 <p className="text-center mt-6 text-sm text-gray-600">
                     Don&apos;t have an account?{" "}
-                    <Link href="/register" className="text-blue-600 font-semibold">
+                    <Link href="/register" className="text-teal-600 font-semibold">
                         Register
                     </Link>
                 </p>

@@ -59,26 +59,26 @@ export function AppointmentModal({ doctor }) {
     return (
         <Modal>
 
-            <Button variant="secondary">Book Appointment</Button>
+            <Button className="rounded-2xl bg-linear-to-r from-teal-700 to-cyan-500 px-5 py-2 font-semibold text-white shadow-md transition">Book Appointment</Button>
 
-            <Modal.Backdrop>
-                <Modal.Container placement="center">
-                    <Modal.Dialog className="sm:max-w-lg">
+            <Modal.Backdrop className="backdrop-blur-sm bg-black/40 z-40" >
+                <Modal.Container placement="center" className="z-50">
+                    <Modal.Dialog className="sm:max-w-lg rounded-3xl border border-teal-100 bg-white shadow-2xl">
 
-                        <Modal.CloseTrigger ref={closeRef} />
+                        <Modal.CloseTrigger ref={closeRef} className="text-teal-500"/>
 
-                        <Modal.Header>
-                            <Modal.Icon className="bg-blue-100 text-blue-600">
+                        <Modal.Header className="border-b border-teal-100 bg-linear-to-r from-teal-50 to-cyan-50 p-5">
+                            <Modal.Icon className="bg-teal-100 text-teal-600 rounded-xl">
                                 <Envelope className="size-5" />
                             </Modal.Icon>
 
-                            <Modal.Heading>
+                            <Modal.Heading className="text-slate-900 font-bold">
                                 Book Appointment
                             </Modal.Heading>
 
-                            <p className="mt-1.5 text-sm text-muted">
+                            <p className="mt-1.5 text-sm text-slate-500">
                                 Fill in your details to book an appointment with{" "}
-                                <span className="font-semibold text-blue-600">
+                                <span className="font-semibold text-teal-600">
                                     {doctor?.name}
                                 </span>
                             </p>
@@ -89,13 +89,11 @@ export function AppointmentModal({ doctor }) {
 
                                 <form onSubmit={onSubmit} className="flex flex-col gap-4">
 
-                                    {/* Patient Name */}
                                     <TextField name="patientName" variant="secondary">
                                         <Label>Patient Name</Label>
                                         <Input name="patientName" placeholder="Enter patient name" />
                                     </TextField>
 
-                                    {/* Gender FIXED */}
                                     <div>
                                         <Label>Gender</Label>
                                         <select
@@ -109,19 +107,16 @@ export function AppointmentModal({ doctor }) {
                                         </select>
                                     </div>
 
-                                    {/* Phone */}
                                     <TextField name="phone" variant="secondary">
                                         <Label>Phone Number</Label>
                                         <Input name="phone" placeholder="01XXXXXXXXX" type="tel" />
                                     </TextField>
 
-                                    {/* Date FIXED */}
                                     <TextField name="date" variant="secondary">
                                         <Label>Appointment Date</Label>
                                         <Input name="date" type="date" />
                                     </TextField>
 
-                                    {/* TIME FIXED (MAIN BUG) */}
                                     <div>
                                         <Label>Available Time Slots</Label>
                                         <select
@@ -137,22 +132,20 @@ export function AppointmentModal({ doctor }) {
                                         </select>
                                     </div>
 
-                                    {/* Note */}
                                     <TextField name="note" variant="secondary">
                                         <Label>Reason / Note</Label>
                                         <Input name="note" placeholder="Short description (optional)" />
                                     </TextField>
 
-                                    {/* Footer */}
                                     <Modal.Footer className="flex gap-3">
 
-                                        <Button slot="close" variant="secondary" className="w-1/2">
+                                        <Button slot="close" variant="secondary" className="text-teal-700 w-1/2">
                                             Cancel
                                         </Button>
 
                                         <Button
                                             type="submit"
-                                            className="w-1/2 bg-blue-600 text-white hover:bg-blue-700"
+                                            className="w-1/2 bg-teal-600 text-white hover:bg-teal-700"
                                         >
                                             Confirm Booking
                                         </Button>

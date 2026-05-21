@@ -29,16 +29,17 @@ export function UpdateUserModal({ user }) {
     }
     return (
         <Modal isOpen={isOpen} onOpenChange={setIsOpen}>
-            <Button variant="outline" className={'w-full bg-blue-500 text-white transition font-bold'}> <FaEdit></FaEdit> Update Profile</Button>
-            <Modal.Backdrop>
-                <Modal.Container placement="auto">
-                    <Modal.Dialog className="sm:max-w-md">
-                        <Modal.CloseTrigger />
-                        <Modal.Header>
-                            <Modal.Icon className="bg-blue-500 text-white">
+            <Button className="w-full rounded-2xl bg-linear-to-r from-teal-700 to-cyan-500 px-5 py-2 font-semibold text-white shadow-md transition"> <FaEdit></FaEdit> Update Profile </Button>
+
+            <Modal.Backdrop className="backdrop-blur-sm bg-black/40">
+                <Modal.Container placement="center" className="z-50">
+                    <Modal.Dialog className="sm:max-w-lg rounded-3xl border border-teal-100 bg-white shadow-2xl">
+                        <Modal.CloseTrigger className="text-teal-500" />
+                        <Modal.Header className="border-b border-teal-100 bg-linear-to-r from-teal-50 to-cyan-50 p-5">
+                            <Modal.Icon className="bg-teal-100 text-teal-600 rounded-xl">
                                 <FaUser></FaUser>
                             </Modal.Icon>
-                            <Modal.Heading>Update Profile</Modal.Heading>
+                            <Modal.Heading className="text-slate-900 font-bold">Update Profile</Modal.Heading>
 
                         </Modal.Header>
                         <Modal.Body className="p-6">
@@ -54,10 +55,10 @@ export function UpdateUserModal({ user }) {
                                     </TextField>
 
                                     <Modal.Footer>
-                                        <Button slot="close" variant="outline" className={'text-blue-500'}>
+                                        <Button slot="close" variant="outline" className="text-teal-700 ">
                                             Cancel
                                         </Button>
-                                        <Button type="submit" className=" bg-blue-400 text-white font-semibold">Save</Button>
+                                        <Button type="submit" className="bg-teal-600 text-white hover:bg-teal-700">Save</Button>
                                     </Modal.Footer>
                                 </form>
                             </Surface>
