@@ -58,7 +58,7 @@ const Navbar = () => {
               </div>
 
               <div className="flex flex-col">
-                <h1 className="hidden bg-gradient-to-r from-teal-700 to-cyan-500 bg-clip-text text-2xl font-black tracking-wide text-transparent sm:block">
+                <h1 className="hidden bg-linear-to-r from-teal-700 to-cyan-500 bg-clip-text text-2xl font-black tracking-wide text-transparent sm:block">
                   DocAppoint
                 </h1>
 
@@ -123,7 +123,7 @@ const Navbar = () => {
                 <Link href={'/register'}>
                   <Button
                     radius="full"
-                    className="bg-gradient-to-r from-teal-700 to-cyan-500 px-6 font-semibold text-white shadow-lg shadow-teal-500/20 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-teal-500/30"
+                    className="bg-linear-to-r from-teal-700 to-cyan-500 px-6 font-semibold text-white shadow-lg shadow-teal-500/20 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-teal-500/30"
                   >
                     Register
                   </Button>

@@ -1,8 +1,11 @@
 import { Button, Card, Chip } from "@heroui/react";
 import Image from "next/image";
 import { FaCalendarAlt, FaClock } from "react-icons/fa";
+import UpdateBookingModal from "./UpdateBookingModal";
+import { DeleteBooking } from "./DeleteBooking";
 
 const MyAppointmentCard = ({ booking }) => {
+    // console.log(booking);
     const { doctorName, doctorImage, appointmentDate, appointmentTime, specialty } = booking;
 
     return (
@@ -60,14 +63,9 @@ const MyAppointmentCard = ({ booking }) => {
                 {/* Footer Actions */}
                 <div className="flex justify-end gap-2 pt-2">
 
-                    <Button
-                        size="sm"
-                        className="w-full sm:w-auto bg-rose-50 text-rose-600 hover:bg-rose-100"
-                    >
-                        Delete
-                    </Button>
+                    <DeleteBooking booking={booking}/>
 
-                    
+                    <UpdateBookingModal booking={booking}/>
 
                 </div>
             </div>
