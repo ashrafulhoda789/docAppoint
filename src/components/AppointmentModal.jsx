@@ -97,7 +97,7 @@ export function AppointmentModal({ doctor }) {
 
                                 <form onSubmit={onSubmit} className="flex flex-col gap-4">
 
-                                    <TextField name="patientName" variant="secondary" isRequired>
+                                    <TextField variant="secondary" isRequired>
                                         <Label>Patient Name</Label>
                                         <Input name="patientName" placeholder="Enter patient name" />
                                     </TextField>
@@ -105,7 +105,7 @@ export function AppointmentModal({ doctor }) {
                                     <div>
                                         <Label>Gender</Label>
                                         <select
-                                            isRequired
+                            
                                             name="gender"
                                             className="w-full p-2 border rounded-md"
                                         >
@@ -116,12 +116,12 @@ export function AppointmentModal({ doctor }) {
                                         </select>
                                     </div>
 
-                                    <TextField name="phone" variant="secondary" isRequired>
+                                    <TextField variant="secondary" isRequired>
                                         <Label>Phone Number</Label>
                                         <Input name="phone" placeholder="01XXXXXXXXX" type="tel" />
                                     </TextField>
 
-                                    <TextField name="date" variant="secondary" isRequired>
+                                    <TextField variant="secondary" isRequired>
                                         <Label>Appointment Date</Label>
                                         <Input name="date" type="date" />
                                     </TextField>
@@ -129,7 +129,7 @@ export function AppointmentModal({ doctor }) {
                                     <div>
                                         <Label>Available Time Slots</Label>
                                         <select
-                                            isRequired
+                                            
                                             name="time"
                                             className="w-full p-2 border rounded-md"
                                         >
@@ -142,7 +142,7 @@ export function AppointmentModal({ doctor }) {
                                         </select>
                                     </div>
 
-                                    <TextField name="note" variant="secondary">
+                                    <TextField variant="secondary">
                                         <Label>Reason / Note</Label>
                                         <Input name="note" placeholder="Short description (optional)" />
                                     </TextField>
