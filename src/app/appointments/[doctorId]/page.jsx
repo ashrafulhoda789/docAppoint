@@ -9,6 +9,18 @@ import {
     FaMoneyBillWave,
 } from "react-icons/fa";
 
+export const generateMetadata = async ({ params }) => {
+    const { doctorId } = await params;
+
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/alldoctors/${doctorId}`);
+
+    const doctor = await res.json();
+    return {
+        title: doctor?.name || "Not Found",
+        description: doctor?.description,
+    }
+}
+
 const DoctorDetailsPage = async ({ params }) => {
 
     const { doctorId } = await params;
