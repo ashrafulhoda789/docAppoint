@@ -15,8 +15,9 @@ export const generateMetadata = async ({ params }) => {
     const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/alldoctors/${doctorId}`);
 
     const doctor = await res.json();
+
     return {
-        title: doctor?.name || "Not Found",
+        title: doctor?.name || "DocAppoint",
         description: doctor?.description,
     }
 }
