@@ -1,6 +1,5 @@
 import { AppointmentModal } from "@/components/AppointmentModal";
 import { auth } from "@/lib/auth";
-import { authClient } from "@/lib/auth-client";
 import { headers } from "next/headers";
 import Image from "next/image";
 import {
@@ -29,7 +28,7 @@ const DoctorDetailsPage = async ({ params }) => {
 
     if (!doctor) {
         return (
-            <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-slate-50 to-teal-50">
+            <div className="flex min-h-screen items-center justify-center bg-linear-to-br from-slate-50 to-teal-50">
                 <h2 className="text-lg font-semibold text-slate-600">
                     Doctor not found
                 </h2>
@@ -38,7 +37,7 @@ const DoctorDetailsPage = async ({ params }) => {
     }
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-teal-50 px-4 py-12">
+        <div className="min-h-screen bg-linear-to-br from-slate-50 via-white to-teal-50 px-4 py-12">
 
             <div className="mx-auto max-w-5xl">
 
@@ -134,7 +133,7 @@ const DoctorDetailsPage = async ({ params }) => {
 
                         </section>
 
-                        <section className="flex items-center justify-between rounded-3xl border border-teal-100 bg-gradient-to-r from-teal-50 to-cyan-50 p-5">
+                        <section className="flex items-center justify-between rounded-3xl border border-teal-100 bg-linear-to-r from-teal-50 to-cyan-50 p-5">
 
                             <div className="flex items-center gap-2 font-medium text-slate-700">
 

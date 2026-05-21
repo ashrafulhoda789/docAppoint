@@ -28,7 +28,7 @@ export function DeleteBooking({ booking }) {
 
             <Button
                 size="sm"
-                className="w-full sm:w-auto bg-rose-50 text-rose-600 hover:bg-rose-100"
+                className="rounded-2xl bg-red-100 px-5 py-3 font-semibold text-red-500 shadow-md transition"
             >
                 Delete
             </Button>
