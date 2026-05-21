@@ -11,6 +11,7 @@ import {
     TextField,
 } from "@heroui/react";
 import { useRef } from "react";
+import { toast } from "react-toastify";
 
 export function AppointmentModal({ doctor }) {
 
@@ -53,6 +54,9 @@ export function AppointmentModal({ doctor }) {
         const data = await res.json();
 
         console.log(data);
+        if(data.insertedId){
+            toast.success('Appointment Booked Successfully!');
+        }
 
         closeRef.current?.click();
     }

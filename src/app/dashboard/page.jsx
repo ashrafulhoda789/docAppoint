@@ -14,9 +14,17 @@ const DashBoardPage = async () => {
 
     const user = session?.user;
 
+    const { token } = await auth.api.getToken({
+        headers: await headers()
+    });
+
     const res = await fetch(
         `http://localhost:5000/myAppointment/${user.id}`,
-        { cache: "no-store" }
+        {
+            headers: {
+                authorization: `Bearer ${token}`
+            }
+        }
     );
 
     const appointments = await res.json();
@@ -30,7 +38,7 @@ const DashBoardPage = async () => {
     return (
         <div className="space-y-10">
 
-            <div className="rounded-3xl border border-teal-100 bg-gradient-to-r from-teal-50 to-cyan-50 p-8">
+            <div className="rounded-3xl border border-teal-100 bg-linear-to-r from-teal-50 to-cyan-50 p-8">
 
                 <h1 className="text-3xl font-black text-slate-900 md:text-4xl">
                     Welcome Back 👋

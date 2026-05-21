@@ -1,7 +1,8 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import { Button, Input, Label, Modal, Surface, TextField } from "@heroui/react";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FaEdit } from "react-icons/fa";
 import { toast } from "react-toastify";
@@ -10,6 +11,7 @@ const UpdateBookingModal = ({ booking }) => {
     // console.log(booking.appointmentTime);
     // console.log(booking._id);
     const [isOpen, setIsOpen] = useState(false);
+    const router = useRouter()
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -22,10 +24,13 @@ const UpdateBookingModal = ({ booking }) => {
             return;
         }
 
+        const {data: tokenData} = await authClient.token();
+
         const res = await fetch(`http://localhost:5000/myAppointment/${booking._id}`, {
             method: 'PATCH',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                authorization: `Bearer ${tokenData.token}`
             },
             body: JSON.stringify(appointment)
         })
@@ -35,10 +40,11 @@ const UpdateBookingModal = ({ booking }) => {
 
         if (data.modifiedCount > 0) {
             toast.success("Appointment updated successfully!");
-            redirect('/dashboard');
+            setIsOpen(false);
+            router.push('/dashboard')
+        } else {
+            toast.error("Update failed");
         }
-
-        setIsOpen(false);
     }
 
     return (
