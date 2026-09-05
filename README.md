@@ -87,4 +87,4 @@ npm install better-auth @better-auth/mongo-adapter mongodb @heroui/react lucide-
 ```
 ---
 ## Author
-###Ashraful Hoda Jamshed
+### Ashraful Hoda Jamshed
