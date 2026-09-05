@@ -12,23 +12,23 @@ This platform streamlines healthcare access by allowing patients to seamlessly d
 
 ---
 
-## ✨ Core Features
+## Core Features
 
-### 👤 Patient Portal
+### Patient Portal
 - **Advanced Authentication**: Secure sign-up/sign-in powered by Better Auth.
 - **Doctor Directory**: Browse verified doctor profiles filtered by specialization and availability.
 - **Streamlined Booking**: Effortless slot booking system with real-time confirmation.
 - **Appointment Tracking**: Dedicated hub to view, reschedule, or cancel bookings.
 - **Profile Management**: Dynamic user profile updates (name, avatar, and contact info).
 
-### 📊 Dashboard System
+### Dashboard System
 - **Real-time Overview**: Key statistics regarding upcoming and past consultations.
 - **Management Center**: Centralized control for booking history and personal credentials.
 - **Responsive Navigation**: Clean, collapsible sidebar designed for seamless UX.
 
 ---
 
-## 🎨 User Interface Preview
+## User Interface Preview
 
 ### Landing Page & Doctor Discovery
 <p align="center">
@@ -67,7 +67,7 @@ This platform streamlines healthcare access by allowing patients to seamlessly d
 
 ---
 
-## 🛠️ Tech Stack & Architecture
+## Tech Stack & Architecture
 
 ### **Frontend**
 - **[Next.js](https://nextjs.org/)** (App Router) – Server-side rendering and optimal performance routing.
